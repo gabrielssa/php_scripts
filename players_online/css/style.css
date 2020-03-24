@@ -92,3 +92,19 @@ nav {
 nav button{
     display: block;
 }
+
+@media (max-width: 600px) 
+{
+  #info{
+      width: 80vw;
+      display: inline-block;
+  }
+
+  .btn{
+      width: 20vw;
+  }
+
+  .nav-btn{
+      width: 100vw;
+  }
+}

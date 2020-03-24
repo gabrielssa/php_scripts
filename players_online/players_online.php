@@ -91,6 +91,7 @@
                         $tempoJogado = $row["totaltime"]/60;
                         $tempoJogado = number_format($tempoJogado, 2, '.', '');
                         echo '<p>Tempo de jogo total: '.($tempoJogado).'Minutos</p>';
+                        echo '<p>Ping: '.$row["latency"].'</p>';
 
                         //fim das informações detalhadas
                     echo '</div>';

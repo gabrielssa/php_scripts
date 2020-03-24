@@ -39,14 +39,20 @@
             echo "<p>Atualmente temos $numrows $jogadores online</p>";
             echo "<h3>Os players que estão online são:</h3>";
 
-            echo '<ul>';
+            echo '<div id="players">';
             while($row = $result->fetch_assoc()){
-                echo '<li>'.$row['name'].' - Level: '.$row['level'].'</li>';
-                echo 'Dinheiro: '.$row['money'];
-                echo '<hr>';
+                echo '<div class="player">';
+                echo $row['name'].' - Level: '.$row['level'];
+                echo ' Dinheiro: '.$row['money'].' ';
+                echo '<form action="php/banir.php" method="post">';
+                echo '<input type="text" id="'.$row['account'].'" name="acct" style="display:none">';
+                echo '<input type="text" id="'.$row['account'].'razao'.'" name="razao" style="display:none">';
+                echo '<input type="text" id="'.$row['account'].'tempo'.'" name="tempo" style="display:none">';
+                echo '<button type="submit" data-acct="'.$row['account'].'" class="btn">Banir</button>';
+                echo'</form>';
+                echo "</div>";
             }
-            echo '</ul>';
-
+            echo '</div>';
             /* Testando umas paradas
             $newMoney = 6000;
             $personagem = "Motumba";
@@ -57,5 +63,6 @@
         ?>
     </main>
 </body>
+<script src="js/main.js" type="text/javascript"></script>
 </html>
 

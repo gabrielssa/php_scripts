@@ -2,11 +2,19 @@ body{
     margin: auto;
     max-width: 600px;
     text-align: center;
-    background: lightblue;
+    background: #54EBFF;
     font-family: sans-serif;
 }
 
 ul{
     list-style-type: none;
     padding: 0px;
+}
+
+.player{
+    border-bottom: 2px solid #FFAD6E ;
+    background: #B36529;
+    padding-bottom: 0.6rem;
+    padding-top: 0.6rem;
+    margin: 5px 0px 0px 0px;
 }

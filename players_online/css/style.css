@@ -1,0 +1,12 @@
+body{
+    margin: auto;
+    max-width: 600px;
+    text-align: center;
+    background: lightblue;
+    font-family: sans-serif;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0px;
+}

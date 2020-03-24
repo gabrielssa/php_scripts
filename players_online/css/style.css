@@ -2,8 +2,19 @@ body{
     margin: auto;
     max-width: 600px;
     text-align: center;
-    background: #54EBFF;
+    background: lightblue;
     font-family: sans-serif;
+}
+
+#info{
+    width: 33.5rem;
+    height: 3rem;
+    display: inline-block;
+    background: lightsalmon;
+}
+
+#action{
+    float: right;
 }
 
 ul{
@@ -12,9 +23,68 @@ ul{
 }
 
 .player{
-    border-bottom: 2px solid #FFAD6E ;
-    background: #B36529;
-    padding-bottom: 0.6rem;
-    padding-top: 0.6rem;
     margin: 5px 0px 0px 0px;
+    padding: 0px;
+}
+
+#info:hover{
+    background: salmon;
+}
+
+.btn{
+    height: 3rem;
+    width: 4rem;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.nav-btn{
+    height: 3rem;
+    width: 4rem;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background: lightgray;
+
+}
+
+.nav-btn:hover{
+    cursor: pointer;
+    background: lightgray;
+
+}
+
+#logo{
+    color: salmon;
+}
+
+.moreinfo img{
+    margin-top: 16px;
+    width: 1rem;
+    display: inline-block;
+}
+
+.moreinfo p{
+    display: block;
+    margin: 0px;
+    text-align: left;
+}
+
+.moreinfo{
+    position: absolute;
+    background: rgba(48, 47, 47, 0.8);
+    color: white;
+}
+
+.moreinfo h1{
+    margin: 0px;
+}
+
+nav {
+    background: lightgrey;
 }

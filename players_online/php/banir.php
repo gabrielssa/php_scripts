@@ -8,6 +8,7 @@
     $conta = $_POST['acct'];
     $razao = $_POST['razao'];
     $tempo = $_POST['tempo'];
+    $senha = $_POST['senha'];
 
     $conexao = mysqli_connect($Host, $Username, $Pass);
     $banco = mysqli_select_db($conexao,$Database);
@@ -22,8 +23,9 @@
     $bannedby = 'website';
     $unbandate = $bandate+($tempo*60);
 
-    
-    if($conta > 0){
+    $senhaCerta = (sha1($senha) == '8a4787c0396a587fa659391b3141a14c88809c1d');
+
+    if($conta > 0 && $senhaCerta){
         $query = "INSERT INTO account_banned (id, bandate, unbandate, bannedby, banreason, active)
         VALUES ($conta, $bandate, $unbandate, '$bannedby', '$razao', 1)";
     
@@ -31,7 +33,8 @@
     
         echo 'A conta selecionada foi banida por '.$tempo.' minutos, razão: '.$razao;
     }else{
-        header('Location: ../players_online.php'); 
+        header('Location: ../players_online.php');
+        alert('test');
     }
 
     $conexao -> close();

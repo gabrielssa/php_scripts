@@ -88,3 +88,7 @@ ul{
 nav {
     background: lightgrey;
 }
+
+nav button{
+    display: block;
+}

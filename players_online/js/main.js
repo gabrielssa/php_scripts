@@ -1,17 +1,3 @@
-function check(el)
-{
-   var curOverflow = el.style.overflow;
-
-   if ( !curOverflow || curOverflow === "visible" )
-      el.style.overflow = "hidden";
-
-   var isOverflowing = el.clientWidth < el.scrollWidth 
-      || el.clientHeight < el.scrollHeight;
-
-   el.style.overflow = curOverflow;
-
-   return isOverflowing;
-}
 
 function include(filename, onload) {
     var head = document.getElementsByTagName('head')[0];
@@ -66,13 +52,28 @@ for (i = 0; i < btns.length; i++){
 
 players = document.getElementsByClassName('player');
 
+let moreInfoCima = true;
+
 for (let element of players){
     element.addEventListener("mouseover", function(){
         player = element.getAttribute("data-player");
         moreinfo = document.getElementById(player);
         moreinfo.style.display = 'block';
-        console.log(check(document.getElementById("body")));
-        printMousePos(moreinfo);
+
+
+        if (moreinfo.getAttribute("data-direcao") == null){
+            overflowing = isOverflowing(moreinfo);
+            if (overflowing){
+                moreinfo.setAttribute("data-direcao", "cima");
+            }
+        }
+
+        if (moreinfo.getAttribute("data-direcao") == "cima"){
+            printMousePos(moreinfo, "cima");
+        }else{
+            printMousePos(moreinfo);
+        }
+
     },false);
 
     element.addEventListener("mouseout", function(){
@@ -82,14 +83,26 @@ for (let element of players){
     },false);
 }
 
-function printMousePos(obj) {
+function printMousePos(obj, paraOnde) {
+    console.log(paraOnde);
     var cursorX;
     var cursorY;
     document.onmousemove = function(e){
         cursorX = e.pageX +10;
         cursorY = e.pageY + 10;
-        obj.style.left = cursorX+"px";
-        obj.style.top = cursorY+"px";
+
+        if (paraOnde == "cima"){
+            
+
+            cursorX = e.pageX - $(moreinfo).innerHeight()-40;
+            cursorY = e.pageY - $(moreinfo).innerWidth()+20;
+
+            obj.style.left = cursorX+"px";
+            obj.style.top = cursorY+"px";
+        }else{  
+            obj.style.left = cursorX+"px";
+            obj.style.top = cursorY+"px";
+        }
     }
 }
 
@@ -98,3 +111,28 @@ document.getElementById("cc-btn").addEventListener("click", function(){
         alert(results);
     });
 },false);
+
+function getPos(el, dimension) {
+    // yay readability
+    for (var lx=0, ly=0;
+         el != null;
+         lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+    if (dimension == "x"){
+        return lx;
+    }else if(dimension =="y"){
+        return ly;
+    }else{
+        return -1;
+    }
+}
+
+function isOverflowing(el){
+    windowH = $('#body').innerHeight()-50;
+    infoH = getPos(el, "y");
+
+    if (infoH > windowH){
+        return true;
+    }else{
+        return false;
+    }
+}

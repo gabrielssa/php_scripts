@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Players online</title>
 </head>
-<body>
+<body id="body">
     <main>
         <?php
             $cHost = "127.0.0.1";
@@ -38,8 +38,10 @@
             echo '<nav>';
             echo '<button class="nav-btn" id="cc-btn">Contas Criadas</button>';
             echo '</nav>';
+            echo '<header>';
             echo "<p>Atualmente temos $numrows $jogadores online</p>";
             echo "<h3>Os players que estão online são:</h3>";
+            echo '</header>';
 
             echo '<div id="players">';
             while($row = $result->fetch_assoc()){
@@ -68,11 +70,15 @@
                         //Começa aqui as informações detalhadas
 
                         //dinheiro
-                        echo '<h1>'.$row['name'].'</h1>';
+                        echo '<h1 class="mi-green">'.$row['name'].'</h1>';
                         $money = $row['money'];
                         $copper = substr($money,-2,2);
                         $silver = substr($money, -4,2);
                         $gold = substr($money,0, strlen($money)-4);
+                        if ($gold == null){
+                            $gold = 0;
+                        }
+                        echo '<p class="mi-gold">Nível do Jogador: '.$row["level"].'</p>';
                         echo '<span>Dinheiro: '.$gold.' ';
                         echo '<img src="img/gold.gif"></img>';
                         echo $silver;
@@ -80,8 +86,6 @@
                         echo $copper;
                         echo '<img src="img/copper.gif"></img>';
                         echo '</span>';
-                        echo '<hr>';
-                        echo '<p>Level: '.$row["level"].'</p>';
                         echo '<hr>';
                         echo '<p>Position_x: '.$row["position_x"].'</p>';
                         echo '<p>Position_y: '.$row["position_y"].'</p>';
@@ -91,7 +95,7 @@
                         $tempoJogado = $row["totaltime"]/60;
                         $tempoJogado = number_format($tempoJogado, 2, '.', '');
                         echo '<p>Tempo de jogo total: '.($tempoJogado).'Minutos</p>';
-                        echo '<p>Ping: '.$row["latency"].'</p>';
+                        echo '<p id="of">Ping: '.$row["latency"].'</p>';
 
                         //fim das informações detalhadas
                     echo '</div>';

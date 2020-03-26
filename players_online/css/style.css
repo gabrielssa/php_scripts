@@ -1,9 +1,15 @@
+@import url(//db.onlinewebfonts.com/c/c8e8fcd5d85d9b587022fe0a79809b73?family=Friz+Quadrata);
+
 body{
     margin: auto;
     max-width: 600px;
-    text-align: center;
     background: lightblue;
     font-family: sans-serif;
+    overflow: visible;
+}
+
+header{
+    text-align: center;
 }
 
 #info{
@@ -11,6 +17,7 @@ body{
     height: 3rem;
     display: inline-block;
     background: lightsalmon;
+    text-align: center;
 }
 
 #action{
@@ -63,6 +70,10 @@ ul{
     color: salmon;
 }
 
+body h1{
+    text-align: center;
+}
+
 .moreinfo img{
     margin-top: 16px;
     width: 1rem;
@@ -78,11 +89,33 @@ ul{
 .moreinfo{
     position: absolute;
     background: rgba(48, 47, 47, 0.8);
-    color: white;
+    font-family: 'Friz Quadrata', cursive;
+    color: #E7FFFF;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid white;
+}
+
+.moreinfo span{
+    padding: 0px;
+}
+
+.mi-green{
+    color: #15C617;
+}
+
+.mi-white{
+    color: #E7FFFF;
+}
+
+.mi-gold{
+    color: #CDBB01;
 }
 
 .moreinfo h1{
     margin: 0px;
+    text-align: left;
+    font-size: 20px;
 }
 
 nav {

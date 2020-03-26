@@ -1,3 +1,18 @@
+function check(el)
+{
+   var curOverflow = el.style.overflow;
+
+   if ( !curOverflow || curOverflow === "visible" )
+      el.style.overflow = "hidden";
+
+   var isOverflowing = el.clientWidth < el.scrollWidth 
+      || el.clientHeight < el.scrollHeight;
+
+   el.style.overflow = curOverflow;
+
+   return isOverflowing;
+}
+
 function include(filename, onload) {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
@@ -56,6 +71,7 @@ for (let element of players){
         player = element.getAttribute("data-player");
         moreinfo = document.getElementById(player);
         moreinfo.style.display = 'block';
+        console.log(check(document.getElementById("body")));
         printMousePos(moreinfo);
     },false);
 

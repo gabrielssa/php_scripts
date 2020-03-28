@@ -1,4 +1,3 @@
-
 function include(filename, onload) {
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
@@ -20,9 +19,22 @@ function include(filename, onload) {
 
 include('https://code.jquery.com/jquery-3.4.1.min.js', function() {
     $(document).ready(function() {
-        //alert('the DOM is ready');
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("conteudo").style.display = "block";
     });
 });
+
+/*
+var i = setInterval(function () {
+    
+    clearInterval(i);
+  
+    // O código desejado é apenas isto:
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
+
+}, 4000);
+*/
 
 btns = document.getElementsByClassName("btn")
 
@@ -58,7 +70,10 @@ for (let element of players){
     element.addEventListener("mouseover", function(){
         player = element.getAttribute("data-player");
         moreinfo = document.getElementById(player);
-        moreinfo.style.display = 'block';
+
+        if (moreinfo.style.display != 'block'){
+            moreinfo.style.display = 'block';
+        }
 
 
         if (moreinfo.getAttribute("data-direcao") == null){
@@ -67,6 +82,7 @@ for (let element of players){
                 moreinfo.setAttribute("data-direcao", "cima");
             }
         }
+
 
         if (moreinfo.getAttribute("data-direcao") == "cima"){
             printMousePos(moreinfo, "cima");
@@ -79,7 +95,9 @@ for (let element of players){
     element.addEventListener("mouseout", function(){
         player = element.getAttribute("data-player");
         moreinfo = document.getElementById(player);
-        moreinfo.style.display = 'none';
+        if (moreinfo.style.display != 'none'){
+            moreinfo.style.display = 'none';
+        }
     },false);
 }
 
@@ -127,7 +145,7 @@ function getPos(el, dimension) {
 }
 
 function isOverflowing(el){
-    windowH = $('#body').innerHeight()-50;
+    windowH = $('#body').innerHeight()-100;
     infoH = getPos(el, "y");
 
     if (infoH > windowH){

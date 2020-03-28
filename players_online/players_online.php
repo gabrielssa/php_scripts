@@ -7,7 +7,11 @@
     <title>Players online</title>
 </head>
 <body id="body">
-    <main>
+    <div id="loading" style="display: block">
+        <img src="https://vignette2.wikia.nocookie.net/wowwiki/images/6/61/Orc_male250x.gif/revision/latest?cb=20120511203041" style="width:150px;height:150px;" />
+        <p>Carregando...</p>
+    </div>
+    <main id = "conteudo" style="display: none">
         <?php
             $cHost = "127.0.0.1";
             $cDatabase = "characters";
@@ -62,7 +66,7 @@
                             echo '<input type="text" id="'.$row['account'].'senha'.'" name="senha" style="display:none">';
 
                             //Botão
-                            echo '<button type="submit" data-acct="'.$row['account'].'" class="btn">Banir</button>';
+                            echo '<button type="submit" data-acct="'.$row['account'].'" class="btn" id="btn-banir">Banir</button>';
                         echo'</form>';
                     echo '</div>';
 

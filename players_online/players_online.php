@@ -74,7 +74,7 @@
                         //Começa aqui as informações detalhadas
 
                         //dinheiro
-                        echo '<h1 class="mi-green">'.$row['name'].'</h1>';
+                        echo '<h1 class="mi-green">'.$row['name'].' <span class="mi-white">(Guid:'.$row['guid'].')</span></h1>';
                         $money = $row['money'];
                         $copper = substr($money,-2,2);
                         $silver = substr($money, -4,2);
